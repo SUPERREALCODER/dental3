@@ -121,27 +121,32 @@ const SectionHeading = ({ children, badge, centered = false, light = false }: { 
   </div>
 );
 
-const ServiceCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <div className="p-10 bg-white border border-slate-100 rounded-none hover:border-brand-600 transition-all group flex flex-col h-full">
-    <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-none flex items-center justify-center mb-8 group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
-      <Icon size={24} />
+const ServiceCard = ({ icon: Icon, title, description, image }: { icon: any, title: string, description: string, image: string }) => (
+  <div className="bg-white border border-slate-100 rounded-none hover:border-brand-600 transition-all group flex flex-col h-full overflow-hidden relative">
+    <div className="h-48 w-full overflow-hidden">
+      <img src={image} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
     </div>
-    <h3 className="text-sm font-bold uppercase tracking-widest text-slate-900 mb-4">{title}</h3>
-    <p className="text-slate-500 text-sm leading-relaxed font-light">{description}</p>
-    <div className="mt-auto pt-8">
-      <ChevronRight className="text-brand-600 group-hover:translate-x-2 transition-transform" size={16} />
+    <div className="p-8 flex flex-col flex-grow relative">
+      <div className="w-12 h-12 bg-white text-brand-600 border border-slate-100 rounded-none flex items-center justify-center mb-6 shadow-sm absolute -top-6 right-8 group-hover:bg-brand-600 group-hover:text-white transition-all duration-300">
+        <Icon size={24} />
+      </div>
+      <h3 className="text-sm font-bold uppercase tracking-widest text-slate-900 mb-4 mt-2">{title}</h3>
+      <p className="text-slate-500 text-sm leading-relaxed font-light">{description}</p>
+      <div className="mt-auto pt-8">
+        <ChevronRight className="text-brand-600 group-hover:translate-x-2 transition-transform" size={16} />
+      </div>
     </div>
   </div>
 );
 
 export default function App() {
   const services = [
-    { icon: Sparkles, title: "Dental Implants", description: "Restore your smile permanently with our high-precision titanium implants." },
-    { icon: Activity, title: "Root Canal Treatment", description: "Advanced, pain-free microscopic RCT procedures for maximum precision." },
-    { icon: Heart, title: "Cosmetic Dentistry", description: "Redesign your smile with expert smile correction and digital smile design." },
-    { icon: Zap, title: "Teeth Whitening", description: "Get a laser-bright smile in a single session with our safe whitening kits." },
-    { icon: ShieldCheck, title: "Braces / Aligners", description: "Clear aligners and modern braces for perfectly aligned teeth at any age." },
-    { icon: Stethoscope, title: "General Dentistry", description: "Complete preventative care including cleanings, fillings, and checkups." },
+    { icon: Sparkles, title: "Dental Implants", description: "Restore your smile permanently with our high-precision titanium implants.", image: "/images/dental_implants.png" },
+    { icon: Activity, title: "Root Canal Treatment", description: "Advanced, pain-free microscopic RCT procedures for maximum precision.", image: "/images/root_canal.png" },
+    { icon: Heart, title: "Cosmetic Dentistry", description: "Redesign your smile with expert smile correction and digital smile design.", image: "/images/cosmetic_dentistry.png" },
+    { icon: Zap, title: "Teeth Whitening", description: "Get a laser-bright smile in a single session with our safe whitening kits.", image: "/images/teeth_whitening.png" },
+    { icon: ShieldCheck, title: "Braces / Aligners", description: "Clear aligners and modern braces for perfectly aligned teeth at any age.", image: "/images/braces_aligners.png" },
+    { icon: Stethoscope, title: "General Dentistry", description: "Complete preventative care including cleanings, fillings, and checkups.", image: "/images/general_dentistry.png" },
   ];
 
   return (
@@ -253,7 +258,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row gap-20 items-center">
             <div className="md:w-1/2 relative">
               <div className="aspect-square bg-slate-50 border border-slate-100 p-8">
-                <div className="w-full h-full bg-slate-200"></div>
+                <img src="/images/clinic.png" alt="State-of-the-art dental clinic" className="w-full h-full object-cover" />
               </div>
               <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-brand-600 text-white p-8 flex flex-col justify-end hidden md:flex">
                 <span className="text-4xl font-bold italic mb-1">100%</span>
@@ -333,7 +338,7 @@ export default function App() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
             >
-              <div className="bg-slate-200 aspect-[4/5]"></div>
+              <img src="/images/doctor.png" alt="Dr. Ananya Roy - Principal Specialist" className="w-full h-full object-cover aspect-[4/5]" />
             </motion.div>
             <div className="md:w-7/12">
               <SectionHeading badge="Principal Specialist">
