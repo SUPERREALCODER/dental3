@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-200: #bae6fd;
+  --color-brand-600: #0284c7; /* Sky 600 */
+  --color-brand-700: #0369a1;
+  --color-brand-900: #0f172a; /* Slate 900 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans bg-white text-slate-800 antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  .geometric-label {
+    @apply text-[10px] sm:text-[11px] uppercase font-bold tracking-[0.2em] sm:tracking-[0.3em] text-slate-400;
+  }
+
+  .geometric-border {
+    @apply border border-slate-100;
+  }
+
+  .geometric-gap {
+    @apply bg-slate-100;
+  }
+
+  .vertical-label {
+    writing-mode: vertical-rl;
+    @apply rotate-180 text-[10px] uppercase tracking-[0.4em] font-black text-slate-200;
+  }
+}
